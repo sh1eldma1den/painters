@@ -1,4 +1,4 @@
-const mongodb = require('../db/connect');
+const mongodb = require('../db/connections');
 const ObjectId = require('mongodb').ObjectId;
 
 const getAll = async (req, res, next) => {
@@ -48,7 +48,7 @@ const addOne = async (req, res) => {
   }
 };
 
-const updateone = async (req, res) => {
+const updateOne = async (req, res) => {
   const userId = new ObjectId(req.params.id);
   const painter = {
     firstName: req.body.firstName,

@@ -1,0 +1,69 @@
+### Get all contacts through api-docs 
+GET http://localhost:8080/api-docs HTTP/1.1  
+### Get contact by _id 
+GET http://localhost:8080/api-docs/6329c369d876ca3c2783bea9 HTTP/1.1 
+### Add new painter 
+POST http://localhost:8080/api-docs HTTP/1.1 
+content-type: application/json
+
+{
+    "firstName": "Justin Michael",
+    "lastName": "Jenkins",
+    "birthPlace": "New York City, NY",
+    "birthDate": "unknown",
+    "nationality": "USA",
+    "education": "West Virginia University",
+    "artForms": "Sculpture, Painting, Drawing"
+} 
+### Update painter
+PUT http://localhost:8080/api-docs/6329c369d876ca3c2783bea HTTP/1.1
+
+content-type: application/json
+
+{
+"firstName": "Justin Michael",
+    "lastName": "Jenkins",
+    "birthPlace": "New York City, NY",
+    "birthDate": "August 14, 1953",
+    "nationality": "USA",
+    "education": "West Virginia University",
+    "artForms": "Sculpture, Painting, Drawing"
+} 
+### DELETE painter 
+DELETE http://localhost:8080/api-docs/632f1fb793bc53fbef3c7047 HTTP/1.1
+
+### Same requests on render 
+GET https://painters-ui6d.onrender.com/api-docs HTTP/1.1 
+
+### GET by _id on Render 
+GET http://https://painters-ui6d.onrender.com/api-docs/6329c369d876ca3c2783bea9 HTTP/1.1 
+
+### Add new painter 
+POST http://painters-ui6d.onrender.com/api-docs HTTP/1.1 
+content-type: application/json
+
+{
+    "firstName": "Justin Michael",
+    "lastName": "Jenkins",
+    "birthPlace": "New York City, NY",
+    "birthDate": "unknown",
+    "nationality": "USA",
+    "education": "West Virginia University",
+    "artForms": "Sculpture, Painting, Drawing"
+} 
+### Update painter
+PUT http://painters-ui6d.onrender.com/api-docs/6329c369d876ca3c2783bea HTTP/1.1
+
+content-type: application/json
+
+{
+"firstName": "Justin Michael",
+    "lastName": "Jenkins",
+    "birthPlace": "New York City, NY",
+    "birthDate": "August 14, 1953",
+    "nationality": "USA",
+    "education": "West Virginia University",
+    "artForms": "Sculpture, Painting, Drawing"
+} 
+### DELETE painter 
+DELETE http://painters-ui6d.onrender.com/api-docs/632f1fb793bc53fbef3c7047 HTTP/1.1

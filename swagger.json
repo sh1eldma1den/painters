@@ -1,11 +1,11 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "Contacts",
-    "description": "Attempt to gather and display contacts",
+    "title": "Painters",
+    "description": "Famous painters of various disciplines",
     "version": "1.0.0"
   },
-  "host": "cse341-770w.onrender.com",
+  "host": "painters-ui6d.onrender.com",
   "basePath": "/",
   "schemes": [
     "https"
@@ -18,9 +18,9 @@
         "responses": {}
       }
     },
-    "/contacts/": {
+    "/painters/": {
       "get": {
-        "description": "",
+        "description": "Get all painters",
         "produces": [
           "application/json"
         ],
@@ -32,7 +32,7 @@
         }
       },
       "post": {
-        "description": "",
+        "description": "Add a new painter",
         "parameters": [
           {
             "name": "body",
@@ -40,44 +40,30 @@
             "schema": {
               "type": "object",
               "properties": {
-                "firstName": {
-                  "example": "any"
-                },
-                "lastName": {
-                  "example": "any"
-                },
-                "birthPlace": {
-                  "example": "any"
-                },
-                "birthDate": {
-                  "example": "any"
-                },
-                "nationality": {
-                  "example": "any"
-                },
-                "education": {
-                  "example": "any"
-                },
-                "artForms": {
-                  "example": "any"
-                }
+                "firstName": "firstName",
+                "lastName": "lastName",
+                "birthPlace": "birthPlace",
+                "birthDate": "Month 00, 0000",
+                "nationality": "nationality",
+                "education": "education",
+                "artForms": "artforms"
               }
             }
           }
         ],
         "responses": {
           "201": {
-            "description": "Created"
+            "description": "Creation successful"
           },
           "500": {
-            "description": "Internal Server Error"
+            "description": "An error occurred during creation."
           }
         }
       }
     },
-    "/contacts/{id}": {
+    "/painters/{id}": {
       "get": {
-        "description": "",
+        "description": "Get painter by id",
         "produces": [
           "application/json"
         ],
@@ -92,11 +78,14 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "500": {
+            "description": "An error occurred during search."
           }
         }
       },
       "put": {
-        "description": "",
+        "description": "Alter data of painter by id",
         "parameters": [
           {
             "name": "id",
@@ -105,7 +94,14 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "201": {
+            "description": "Update successful."
+          },
+          "500": {
+            "description": "An error occurred during update."
+          }
+        }
       },
       "delete": {
         "description": "",
@@ -119,10 +115,10 @@
         ],
         "responses": {
           "204": {
-            "description": "No Content"
+            "description": "Deletion success."
           },
           "500": {
-            "description": "Internal Server Error"
+            "description": "An error occurred during deletion."
           }
         }
       }

@@ -39,7 +39,7 @@ const addOne = async (req, res) => {
   const response = await mongodb
     .getDb()
     .db()
-    .collection('post_modern')
+    .collection("post_modern")
     .insertOne(artist);
   if (response.acknowledged) {
     res.status(201).json(response);
@@ -62,7 +62,7 @@ const updateOne = async (req, res) => {
   const response = await mongodb
     .getDb()
     .db()
-    .collection('post_modern')
+    .collection("post_modern")
     .replaceOne({_id: userId}, artist);
   console.log(response);
   if (response.modifiedCount > 0) {
@@ -77,7 +77,7 @@ const deleteOne = async (req, res) => {
   const response = await mongodb
     .getDb()
     .db()
-    .collection('post_modern')
+    .collection("post_modern")
     .deleteOne({_id: userId}, true);
   console.log(response);
   if (response.deletedCount > 0) {

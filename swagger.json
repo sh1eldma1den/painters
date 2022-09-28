@@ -92,7 +92,7 @@
         }
       },
       "put": {
-        "description": "Alter data of artist by id",
+        "description": "",
         "parameters": [
           {
             "name": "id",
@@ -123,7 +123,7 @@
               }
             }
           }
-      ],
+        ],
         "responses": {
           "204": {
             "description": "Update successful."

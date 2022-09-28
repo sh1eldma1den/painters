@@ -1,0 +1,52 @@
+{
+    "customer1":{
+        "firstName": "Robert",
+        "lastName": "Rauschenberg",
+        "address": "17 Davenport Drive, Columbia, SC",
+        "birthDate": "October 22, 1975",
+        "email": "rrauschb@forten.org",
+        "classesTaken": "",
+        "ordersPlaced": "",
+        "subscribed": "Yes"
+    },
+    "customer2":{
+        "firstName": "Johanna",
+        "lastName": "Drucker",
+        "address": "1125 Philadelphia Way, North Augusta, SC",
+        "birthDate": "May 30, 1962",
+        "email": "jdrucker@live.com",
+        "classesTaken": "",
+        "ordersPlaced": "",
+        "subscribed": "Yes"
+    },
+    "customer3":{
+        "firstName": "Aydin",
+        "lastName": "Aghdashloo",
+        "address": "88 Rasht Street, Aiken, SC",
+        "birthDate": "October 30, 1970",
+        "email": "aaghdashloo@tpsa.edu",
+        "classesTaken": "",
+        "ordersPlaced": "",
+        "subscribed": "No"
+    },
+    "customer4":{
+        "firstName": "Robert",
+        "lastName": "Breer",
+        "address": "45 S. Detroit Parkway, Aiken, SC",
+        "birthDate": "",
+        "email": "breerr@yahoo.com",
+        "classesTaken": "",
+        "ordersPlaced": "",
+        "subscribed": "No"
+    },
+    "artist5":{
+        "firstName": "Alicia",
+        "lastName": "Blythe",
+        "address": "1313 Little Mare Road, Aiken, SC",
+        "birthDate": "January 4, 1980",
+        "email": "sailing4fun@hotmail.com",
+        "classesTaken": "",
+        "ordersPlaced": "",
+        "subscribed": "Yes"
+  }
+}

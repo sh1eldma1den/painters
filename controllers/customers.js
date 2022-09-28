@@ -5,7 +5,7 @@ const getAll = async (req, res, next) => {
   const result = await mongodb
     .getDb()
     .db()
-    .collection("post_modern")
+    .collection("customer_info")
     .find();
   result.toArray().then((lists) => {
     res.setHeader('Content-Type', 'application/json');
@@ -18,7 +18,7 @@ const getOne = async (req, res, next) => {
   const result = await mongodb
     .getDb()
     .db()
-    .collection("post_modern")
+    .collection("customer_info")
     .find({ _id: userId});
   result.toArray().then((lists) => {
     res.setHeader('Content-Type', 'application/json');
@@ -27,20 +27,21 @@ const getOne = async (req, res, next) => {
 };
 
 const addOne = async (req, res) => {
-  const artist = {
+  const customer = {
     firstName: req.body.firstName,
     lastName: req.body.lastName,
-    birthPlace: req.body.birthPlace,
+    address: req.body.address,
     birthDate: req.body.birthDate,
-    nationality: req.body.nationality,
-    education: req.body.education,
-    movements: req.body.movements
+    email: req.body.email,
+    classesTaken: req.body.classesTaken,
+    ordersPlaced: req.body.ordersPlaced,
+    subscribed: req.body.subscribed
   };
   const response = await mongodb
     .getDb()
     .db()
-    .collection("post_modern")
-    .insertOne(artist);
+    .collection("customer_info")
+    .insertOne(customer);
   if (response.acknowledged) {
     res.status(201).json(response);
   } else {
@@ -50,20 +51,21 @@ const addOne = async (req, res) => {
 
 const updateOne = async (req, res) => {
   const userId = new ObjectId(req.params.id);
-  const artist = {
+  const customer = {
     firstName: req.body.firstName,
     lastName: req.body.lastName,
-    birthPlace: req.body.birthPlace,
+    address: req.body.address,
     birthDate: req.body.birthDate,
-    nationality: req.body.nationality,
-    education: req.body.education,
-    movements: req.body.movements
+    email: req.body.email,
+    classesTaken: req.body.classesTaken,
+    ordersPlaced: req.body.ordersPlaced,
+    subscribed: req.body.subscribed
   };
   const response = await mongodb
     .getDb()
     .db()
-    .collection("post_modern")
-    .replaceOne({_id: userId}, artist);
+    .collection("customer_info")
+    .replaceOne({_id: userId}, customer);
   console.log(response);
   if (response.modifiedCount > 0) {
     res.status(204).send();
@@ -77,7 +79,7 @@ const deleteOne = async (req, res) => {
   const response = await mongodb
     .getDb()
     .db()
-    .collection("post_modern")
+    .collection("customer_info")
     .deleteOne({_id: userId}, true);
   console.log(response);
   if (response.deletedCount > 0) {

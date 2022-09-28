@@ -2,8 +2,8 @@ const swaggerAutogen = require('swagger-autogen')();
 
 const doc = {
     info: {
-        title: 'Painters',
-        description: 'Famous painters of various disciplines',
+        title: "Painters'Corner",
+        description: 'Classes, supplies, and customer information.',
     },
     host: 'painters-ui6d.onrender.com',
     schemes: ['https']

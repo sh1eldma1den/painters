@@ -34,7 +34,7 @@ const addOne = async (req, res) => {
     birthDate: req.body.birthDate,
     nationality: req.body.nationality,
     education: req.body.education,
-    artForms: req.body.artForms
+    movements: req.body.movements
   };
   const response = await mongodb
     .getDb()
@@ -57,7 +57,7 @@ const updateOne = async (req, res) => {
     birthDate: req.body.birthDate,
     nationality: req.body.nationality,
     education: req.body.education,
-    artForms: req.body.artForms
+    movements: req.body.movements
   };
   const response = await mongodb
     .getDb()

@@ -27,7 +27,7 @@ const getOne = async (req, res, next) => {
 };
 
 const addOne = async (req, res) => {
-  const painter = {
+  const artist = {
     firstName: req.body.firstName,
     lastName: req.body.lastName,
     birthPlace: req.body.birthPlace,
@@ -40,17 +40,17 @@ const addOne = async (req, res) => {
     .getDb()
     .db()
     .collection('post_modern')
-    .insertOne(painter);
+    .insertOne(artist);
   if (response.acknowledged) {
     res.status(201).json(response);
   } else {
-    res.status(500).json(response.error || 'An error occurred while creating the contact.');
+    res.status(500).json(response.error || 'An error occurred while creating the artist.');
   }
 };
 
 const updateOne = async (req, res) => {
   const userId = new ObjectId(req.params.id);
-  const painter = {
+  const artist = {
     firstName: req.body.firstName,
     lastName: req.body.lastName,
     birthPlace: req.body.birthPlace,
@@ -62,13 +62,13 @@ const updateOne = async (req, res) => {
   const response = await mongodb
     .getDb()
     .db()
-    .collection('post-modern')
-    .replaceOne({_id: userId}, painter);
+    .collection('post_modern')
+    .replaceOne({_id: userId}, artist);
   console.log(response);
   if (response.modifiedCount > 0) {
     res.status(204).send();
   } else {
-    res.status(500).json(response.error || 'An error occurred while updating the contact.');
+    res.status(500).json(response.error || 'An error occurred while updating the artist.');
   }
 };
 
@@ -83,7 +83,7 @@ const deleteOne = async (req, res) => {
   if (response.deletedCount > 0) {
     res.status(204).send();
   } else {
-    res.status(500).json(response.error || 'An error occurred while deleting the contact.');
+    res.status(500).json(response.error || 'An error occurred while deleting the artist.');
   }
 };
 

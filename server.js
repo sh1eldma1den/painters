@@ -30,7 +30,7 @@ mongodb.initDb((err, mongodb) => {
         console.log(err);
     } else {
         app.listen(port);
-        console.log('Connected to the DB and lisening on ${PORT}');
+        console.log('Connected to the DB and lisening on {$port}');
     }
 });
 

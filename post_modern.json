@@ -1,5 +1,5 @@
 {
-    "painter":{
+    "artist":{
         "firstName": "Robert",
         "lastName": "Rauschenberg",
         "birthPlace": "Port Arthur, Texas",
@@ -8,7 +8,7 @@
         "education": "unknown",
         "movements": "Mixed media, Abstract expressionism, Neo-Dada, Postmodernism, Pop art"
     },
-    "painter2":{
+    "artist2":{
         "firstName": "Johanna",
         "lastName": "Drucker",
         "birthPlace": "Philadelphia, Pennsylvania",
@@ -17,7 +17,7 @@
         "education": "UCLA",
         "movements": "Letterforms, Typography, Book artist"
     },
-    "painter3":{
+    "artist3":{
         "firstName": "Aydin",
         "lastName": "Aghdashloo",
         "birthPlace": "Rasht, Iran",
@@ -26,7 +26,7 @@
         "education": "unknown",
         "movements": "Postmodernism"
     },
-    "painter4":{
+    "artist4":{
         "firstName": "Robert",
         "lastName": "Breer",
         "birthPlace": "Detroit, Michigan",
@@ -35,7 +35,7 @@
         "education": "unknown",
         "movements": "Modernism, Postmodernism"
     },
-    "painter5":{
+    "artist5":{
         "firstName": "firstName",
         "lastName": "lastName",
         "birthPlace": "birthPlace",

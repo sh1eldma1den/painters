@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "title": "Painters",
-    "description": "Famous painters of various disciplines",
+    "description": "Famous artists of various disciplines",
     "version": "1.0.0"
   },
   "host": "painters-ui6d.onrender.com",
@@ -20,7 +20,7 @@
     },
     "/painters/": {
       "get": {
-        "description": "Get all painters",
+        "description": "Get all artists",
         "produces": [
           "application/json"
         ],
@@ -32,7 +32,7 @@
         }
       },
       "post": {
-        "description": "Add a new painter",
+        "description": "Add a new artist",
         "parameters": [
           {
             "name": "body",
@@ -40,13 +40,20 @@
             "schema": {
               "type": "object",
               "properties": {
-                "firstName": "firstName",
-                "lastName": "lastName",
-                "birthPlace": "birthPlace",
-                "birthDate": "Month 00, 0000",
-                "nationality": "nationality",
-                "education": "education",
-                "movements": "movements"
+                "firstName": {
+                  "example": "any"},
+                "lastName": {
+                  "example": "any"},
+                "birthPlace": {
+                  "example": "any"},
+                "birthDate": {
+                  "example": "any"},
+                "nationality": {
+                  "example": "any"},
+                "education": {
+                  "example": "any"},
+                "movements": {
+                  "example": "any"}
               }
             }
           }
@@ -85,15 +92,38 @@
         }
       },
       "put": {
-        "description": "Alter data of painter by id",
+        "description": "Alter data of artist by id",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+          "name": "body",
+          "in": "body",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "firstName": {
+                "example": "any"},
+              "lastName": {
+                "example": "any"},
+              "birthPlace": {
+                "example": "any"},
+              "birthDate": {
+                "example": "any"},
+              "nationality": {
+                "example": "any"},
+              "education": {
+                "example": "any"},
+              "movements": {
+                "example": "any"}
+              }
+            }
           }
-        ],
+      ],
         "responses": {
           "201": {
             "description": "Update successful."
@@ -104,7 +134,7 @@
         }
       },
       "delete": {
-        "description": "",
+        "description": "Delete an artist by id",
         "parameters": [
           {
             "name": "id",

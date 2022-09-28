@@ -2,7 +2,7 @@ const express = require('express');
 const router = require('express').Router();
 
 router.use('/', require('./swagger'));
-router.use('/painters', require('./painters'));
+router.use('/', require('./painters'));
 router.use('/',
     (docData = (req,res) => {
         let docData = {

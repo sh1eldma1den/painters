@@ -125,7 +125,7 @@
           }
       ],
         "responses": {
-          "201": {
+          "204": {
             "description": "Update successful."
           },
           "500": {

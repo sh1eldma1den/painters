@@ -1,0 +1,58 @@
+{
+    "class1":{
+        "className": "Figure Drawing from Life Workshop",
+        "classDate": "January 10 and 17, 2022",
+        "classTime": "10 AM - 2 PM",
+        "classLevel": "Beginner",
+        "suppliesIncluded": "Yes"
+    },
+    "class2":{
+        "className": "Pastels II",
+        "classDate": "T TH, May 3-31, 2022",
+        "classTime": "10 AM - 11:30 AM",
+        "classLevel": "Intermediate",
+        "suppliesIncluded": "No"
+    },
+    "class3":{
+        "className": "Bookbinding",
+        "classDate": "July 11-15, 2022",
+        "classTime": "10 AM - 12 PM",
+        "classLevel": "Beginner",
+        "suppliesIncluded": "Yes"
+    },
+    "class4":{
+        "className": "Still Life in Oil",
+        "classDate": "M W, August 1 - September 28, 2022",
+        "classTime": "10 AM - 12 PM",
+        "classLevel": "Intermediate",
+        "suppliesIncluded": "No"
+    },
+    "class5":{
+        "className": "Capturing Light: Spring Oils Workshop",
+        "classDate": "April 9, 16, 23, 2022",
+        "classTime": "10 AM - 2 PM",
+        "classLevel": "Advanced",
+        "suppliesIncluded": "No"
+    },
+    "class6":{
+        "className": "Pencil Sketching I",
+        "classDate": "M W, March 7 - 23, 2022",
+        "classTime": "10 AM - 11:30 AM",
+        "classLevel": "Beginner",
+        "suppliesIncluded": "Yes"
+    },
+    "class7":{
+        "className": "Ceramics III",
+        "classDate": "T TH, January 4 - April 28, 2022",
+        "classTime": "10 AM - 12 PM",
+        "classLevel": "Advanced",
+        "suppliesIncluded": "Yes"
+    },
+    "class8":{
+        "className": "Sensory Ceramics",
+        "classDate": "January 13 - 17, 2022",
+        "classTime": "10 AM - 12:30 PM",
+        "classLevel": "Children - Elementary",
+        "suppliesIncluded": "Yes"
+    }
+}

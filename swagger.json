@@ -30,7 +30,8 @@
             "description": "OK"
           }
         }
-      },
+      }
+    },
       "post": {
         "description": "Add a new customer",
         "parameters": [
@@ -68,8 +69,7 @@
             "description": "An error occurred during creation."
           }
         }
-      }
-    },
+      },
     "/customers/{id}": {
       "get": {
         "description": "Get customer by id",
@@ -92,7 +92,8 @@
             "description": "An error occurred during search."
           }
         }
-      },
+      }
+    },
       "put": {
         "description": "",
         "parameters": [
@@ -186,7 +187,8 @@
               }
             }
           }
-        ],
+        ]
+      },
         "responses": {
           "201": {
             "description": "Creation successful"
@@ -195,8 +197,7 @@
             "description": "An error occurred during creation."
           }
         }
-      }
-    },
+      },
     "/classes/{id}": {
       "get": {
         "description": "Get class by id",
@@ -219,7 +220,8 @@
             "description": "An error occurred during search."
           }
         }
-      },
+      }
+    },
       "put": {
         "description": "",
         "parameters": [
@@ -272,5 +274,3 @@
         }
       }
     }
-  }
-}

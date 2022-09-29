@@ -164,7 +164,8 @@
           "description": "OK"
         }
       }
-    },
+    }
+  },
     "post": {
       "description": "Add a new class",
       "parameters": [
@@ -196,8 +197,7 @@
           "description": "An error occurred during creation."
         }
       }
-    }
-  },
+    },
     "/classes/{id}": {
       "get": {
         "description": "Get class by id",
@@ -220,7 +220,8 @@
             "description": "An error occurred during search."
           }
         }
-      },
+      }
+    },
     "put": {
       "description": "",
       "parameters": [
@@ -273,5 +274,5 @@
       }
     }
   }
-} 
+ 
  

@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "Painters'Corner",
+    "title": "Painters' Corner",
     "description": "Classes, supplies, and customer information.",
     "version": "1.0.0"
   },
@@ -18,9 +18,9 @@
         "responses": {}
       }
     },
-    "/": {
+    "/customers/": {
       "get": {
-        "description": "",
+        "description": "Get all customers",
         "produces": [
           "application/json"
         ],
@@ -31,47 +31,48 @@
           }
         }
       },
-      "post": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "className": {
-                  "example": "any"
-                },
-                "classDate": {
-                  "example": "any"
-                },
-                "classTime": {
-                  "example": "any"
-                },
-                "classLevel": {
-                  "example": "any"
-                },
-                "suppliesIncluded": {
-                  "example": "any"
-                }
-              }
+    "post": {
+      "description": "Add a new customer",
+      "parameters": [
+        {
+          "name": "body",
+          "in": "body",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "firstName": {
+                "example": "any"},
+              "lastName": {
+                "example": "any"},
+              "address": {
+                "example": "any"},
+              "birthDate": {
+                "example": "any"},
+              "email": {
+                "example": "any"},
+              "classesTaken": {
+                "example": "any"},
+              "ordersPlaced": {
+                "example": "any"},
+              "subscribed": {
+                "example": "any"}
             }
           }
-        ],
-        "responses": {
-          "201": {
-            "description": "Created"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
+        }
+      ],
+      "responses": {
+        "201": {
+          "description": "Creation successful"
+        },
+        "500": {
+          "description": "An error occurred during creation."
         }
       }
-    },
-    "/{id}": {
+    }
+  },
+    "/customers/{id}": {
       "get": {
-        "description": "",
+        "description": "Get customer by id",
         "produces": [
           "application/json"
         ],
@@ -86,71 +87,71 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "500": {
+            "description": "An error occurred during search."
           }
         }
       },
-      "put": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "className": {
-                  "example": "any"
-                },
-                "classDate": {
-                  "example": "any"
-                },
-                "classTime": {
-                  "example": "any"
-                },
-                "classLevel": {
-                  "example": "any"
-                },
-                "suppliesIncluded": {
-                  "example": "any"
-                }
-              }
+    "put": {
+      "description": "",
+      "parameters": [
+        {
+          "name": "body",
+          "in": "body",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "firstName": {
+                "example": "any"},
+              "lastName": {
+                "example": "any"},
+              "address": {
+                "example": "any"},
+              "birthDate": {
+                "example": "any"},
+              "email": {
+                "example": "any"},
+              "classesTaken": {
+                "example": "any"},
+              "ordersPlaced": {
+                "example": "any"},
+              "subscribed": {
+                "example": "any"}
             }
           }
-        ],
-        "responses": {
-          "204": {
-            "description": "No Content"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
         }
-      },
-      "delete": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "No Content"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
+      ],
+      "responses": {
+        "204": {
+          "description": "Update successful."
+        },
+        "500": {
+          "description": "An error occurred during update."
+        }
+      }
+    },
+    "delete": {
+      "description": "Delete a customer by id",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "responses": {
+        "204": {
+          "description": "Deletion success."
+        },
+        "500": {
+          "description": "An error occurred during deletion."
         }
       }
     }
   }
 }
+  }
+ 
+ 

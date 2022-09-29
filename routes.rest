@@ -1,5 +1,5 @@
 ### Get all customers through api-docs 
-GET http://localhost:8080/api-docs HTTP/1.1 
+GET http://localhost:8080/api-docs HTTP/1.1
 
 ### Get customer by _id 
 GET http://localhost:8080/api-docs/6334c6ef4e80bb90e8a5ce9c HTTP/1.1

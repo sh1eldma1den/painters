@@ -5,7 +5,7 @@ const getAll = async (req, res, next) => {
   const result = await mongodb
     .getDb()
     .db()
-    .collection("classes")
+    .collection('classes')
     .find();
   result.toArray().then((lists) => {
     res.setHeader('Content-Type', 'application/json');
@@ -18,7 +18,7 @@ const getOne = async (req, res, next) => {
   const result = await mongodb
     .getDb()
     .db()
-    .collection("classes")
+    .collection('classes')
     .find({ _id: userId});
   result.toArray().then((lists) => {
     res.setHeader('Content-Type', 'application/json');
@@ -37,7 +37,7 @@ const addOne = async (req, res) => {
   const response = await mongodb
     .getDb()
     .db()
-    .collection("classes")
+    .collection('classes')
     .insertOne(class_info);
   if (response.acknowledged) {
     res.status(201).json(response);
@@ -58,7 +58,7 @@ const updateOne = async (req, res) => {
   const response = await mongodb
     .getDb()
     .db()
-    .collection("classes")
+    .collection('classes')
     .replaceOne({_id: userId}, class_info);
   console.log(response);
   if (response.modifiedCount > 0) {
@@ -73,7 +73,7 @@ const deleteOne = async (req, res) => {
   const response = await mongodb
     .getDb()
     .db()
-    .collection("classes")
+    .collection('classes')
     .deleteOne({_id: userId}, true);
   console.log(response);
   if (response.deletedCount > 0) {

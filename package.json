@@ -28,6 +28,7 @@
     "swagger": "^0.0.1",
     "swagger-autogen": "^2.22.0",
     "swagger-editor": "^2.10.5",
-    "swagger-ui": "^4.14.2"
+    "swagger-ui": "^4.14.2",
+    "swagger-ui-express": "^4.5.0"
   }
 }

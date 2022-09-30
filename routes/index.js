@@ -7,7 +7,7 @@ router.use('/', require('./customers'));
 router.use('/',
     (docData = (req,res) => {
         let docData = {
-            documentationURL:'https://https://github.com/sh1eldma1den/painters/tree/main/api-docs',
+            documentationURL:'https://github.com/sh1eldma1den/painters/tree/main/api-docs',
         };
         res.send(docData);
     })

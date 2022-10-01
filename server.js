@@ -3,15 +3,13 @@ const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
 const MongoClient = require('mongodb');
-const mongodb = require('./db/connections');
+const [db, objectId] = require('./db/connections')(
+    process.env.MONGODB_URI,
+    MongoClient);
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json');
 const url = require('url');
 const cors = require('cors');
-const [db, objectId] = require("./db/connections")(
-    process.env.MONGO_URI,
-    MongoClient
-);
 const port = process.env.PORT || 8000;
 const app = express();
 

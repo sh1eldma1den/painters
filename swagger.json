@@ -7,27 +7,25 @@
   },
   "host": "painters-ui6d.onrender.com",
   "basePath": "/",
-  "schemes": [
-    "https"
-  ],
+  "schemes": ["https"],
   "paths": {
-    "/api-docs": {
+    "/": {
       "get": {
-        "description": "",
+        "description": "Brings up home page of app.",
         "parameters": [],
         "responses": {}
       }
     },
-    "/customers/": {
+    "/customers": {
       "get": {
         "description": "Get all customers",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Returns all customers."
+          },
+          "500": {
+            "description": "Internal Server Error."
           }
         }
       },
@@ -64,8 +62,11 @@
         "201": {
           "description": "Creation successful"
         },
+        "400": {
+          "description":"Required field/fields are missing."
+        },
         "500": {
-          "description": "An error occurred during creation."
+          "description": "Internal Server Error."
         }
       }
     }
@@ -73,9 +74,6 @@
     "/customers/{id}": {
       "get": {
         "description": "Get customer by id",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "name": "id",
@@ -86,7 +84,13 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Returns customer."
+          },
+          "400":{
+            "description":"ID not provided."
+          },
+          "404":{
+            "description":"No customer matches that ID."
           },
           "500": {
             "description": "An error occurred during search."
@@ -94,7 +98,7 @@
         }
       },
     "put": {
-      "description": "",
+      "description": "Updates a customer by ID",
       "parameters": [
         {
           "name": "id",
@@ -132,6 +136,9 @@
         "204": {
           "description": "Update successful."
         },
+        "400":{
+          "description":"Customer ID not provided."
+        },
         "500": {
           "description": "An error occurred during update."
         }
@@ -151,12 +158,164 @@
         "204": {
           "description": "Deletion success."
         },
+        "400":{
+          "description":"ID not provided."
+        },
+        "404":{
+          "description":"No customer matches that ID."
+        },
+        "500": {
+          "description": "An error occurred during deletion."
+        }
+      }
+    },
+    "/classess": {
+      "get": {
+        "description": "Get all classes",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Returns all classes."
+          },
+          "500": {
+            "description": "Internal Server Error."
+          }
+        }
+      },
+    "post": {
+      "description": "Add a new class.",
+      "parameters": [
+        {
+          "name": "body",
+          "in": "body",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "className": {
+                "example": "any"},
+              "classDate": {
+                "example": "any"},
+              "classTime": {
+                "example": "any"},
+              "classLevel": {
+                "example": "any"},
+              "suppliesIncluded": {
+                "example": "any"}
+            }
+          }
+        }
+      ],
+      "responses": {
+        "201": {
+          "description": "Creation successful"
+        },
+        "400":{
+          "description":"Required field/fields are missing."
+        },
+        "500": {
+          "description": "An error occurred during creation."
+        }
+      }
+    }
+  },
+    "/classes/{id}": {
+      "get": {
+        "description": "Get class by id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400":{
+            "description":"ID not provided."
+          },
+          "404":{
+            "description":"No customer matches that ID."
+          },
+          "500": {
+            "description": "An error occurred during search."
+          }
+        }
+      },
+    "put": {
+      "description": "Update a class",
+      "parameters": [
+          {
+          "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+          "name": "body",
+          "in": "body",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "className": {
+                "example": "any"},
+              "classDate": {
+                "example": "any"},
+              "classTime": {
+                "example": "any"},
+              "classLevel": {
+                "example": "any"},
+              "suppliesIncluded": {
+                "example": "any"}
+            }
+          }
+          }
+      ],
+      "responses": {
+        "204": {
+          "description": "Update successful."
+        },
+        "400":{
+          "description":"ID not provided."
+        },
+        "404":{
+          "description":"No customer matches that ID."
+        },
+        "500": {
+          "description": "An error occurred during update."
+        }
+      }
+    },
+    "delete": {
+      "description": "Delete a class by id",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "responses": {
+        "204": {
+          "description": "Deletion success."
+        },
+        "400":{
+          "description":"ID not provided."
+        },
+        "404":{
+          "description":"No customer matches that ID."
+        },
         "500": {
           "description": "An error occurred during deletion."
         }
       }
     }
   }
+}
   }}
+
  
  

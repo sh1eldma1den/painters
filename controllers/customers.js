@@ -7,7 +7,7 @@ const getAll = async (req, res, next) => {
     .db('project2')
     .collection('customer_info')
     .find();
-  result.toArray().catch((lists) => {
+  result.toArray().then((lists) => {
     res.setHeader('Content-Type', 'application/json');
     res.status(200).json(lists);
   });

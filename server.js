@@ -1,10 +1,17 @@
+const createError = require('http-errors');
+const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
+const MongoClient = require('mongodb');
 const mongodb = require('./db/connections');
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json');
+const url = require('url');
 const cors = require('cors');
-
+const [db, objectId] = require("./db/connections")(
+    process.env.MONGO_URI,
+    MongoClient
+);
 const port = process.env.PORT || 8000;
 const app = express();
 
@@ -33,6 +40,33 @@ mongodb.initDb((err, mongodb) => {
         console.log('Connected to the DB and lisening on {$port}');
     }
 });
+
+const {validationResult, check} = require('express-validator');
+const {
+    createCustomerValidation,
+    createClassValidation,
+    viewOneCustomerValidation,
+    viewOneClassValidation,
+    deleteOneCustomerValidation,
+    deleteOneClassValidation
+}  = require('./checks/validation.js')(check);
+
+const dependencies = {
+    db: db,
+    url: url,
+    objectId: objectId,
+    validationResult: validationResult,
+    createCustomerValidation: createCustomerValidation,
+    createClassValidation: createClassValidation,
+    viewOneCustomerValidation: viewOneCustomerValidation,
+    viewOneClassValidation: viewOneClassValidation,
+    deleteOneCustomerValidation: deleteOneCustomerValidation,
+    deleteOneClassValidation: deleteOneClassValidation
+};
+
+require('./routes')(app, dependencies);
+
+
 
 
 

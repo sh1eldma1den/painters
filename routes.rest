@@ -77,7 +77,7 @@ content-type: application/json
     "subscribed": "No"
 }
 
-### DELETE painter 
+### DELETE customer
 DELETE http://painters-ui6d.onrender.com/api-docs/632f1fb793bc53fbef3c7047 HTTP/1.1
 
 ### Get all classes through api-docs 

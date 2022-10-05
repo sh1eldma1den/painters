@@ -1,6 +1,10 @@
 const mongodb = require('../db/connections');
 const ObjectId = require('mongodb').ObjectId;
 
+res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
+    next();
+
 const getAll = async (req, res, next) => {
   const result = await mongodb
     .getDb()
@@ -9,6 +13,9 @@ const getAll = async (req, res, next) => {
     .find();
   result.toArray().then((lists) => {
     res.setHeader('Content-Type', 'application/json');
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
+    next();
     res.status(200).json(lists);
   });
   

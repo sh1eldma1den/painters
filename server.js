@@ -1,34 +1,25 @@
-const createError = require('http-errors');
-const path = require('path');
 const express = require('express');
-const bodyParser = require('body-parser');
+const app = express();
+app.use(express.json());
+require('dotenv').config();
+const port = process.env.PORT || 8000;
+app.listen(port);
+const cors = require('cors');
+app.use(cors());
 const MongoClient = require('mongodb');
 const [db, objectId] = require('./db/connections')(
     process.env.MONGODB_URI,
     MongoClient);
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.json());
+const axios = require('axios');
+
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json');
-const url = require('url');
-const cors = require('cors');
-const port = process.env.PORT || 8000;
-const app = express();
-
-app.use(bodyParser.json());
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader(
-        'Access-Control-Allow-Headers',
-        'Origin, X-Requested-With, Content-Type, Accept'
-    );
-    // res.setHeader('Content-Type', 'application/json');
-    res.setHeader('Access-Control--Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-    next();
-});
-app.use(cors());
-app.use(express.json());
-app.use(express.urlencoded({extended: true}));
-app.use('/', require('./routes'));
+
+const url = require('url');
 
 const {validationResult, check} = require('express-validator');
 const {
@@ -53,7 +44,7 @@ const dependencies = {
     deleteOneClassValidation: deleteOneClassValidation
 };
 
-require('./routes')(app, dependencies);
+// require('./routes/index.js')(app, dependencies);
 
 
 

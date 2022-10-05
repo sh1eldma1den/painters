@@ -1,5 +1,3 @@
-const dotenv = require('dotenv');
-dotenv.config();
 module.exports = function (uri, mc) {
     const client = new mc.MongoClient(uri);
 

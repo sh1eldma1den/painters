@@ -168,7 +168,8 @@
           "description": "An error occurred during deletion."
         }
       }
-    },
+    }
+  },
     "/classess": {
       "get": {
         "description": "Get all classes",
@@ -243,7 +244,8 @@
             "description": "An error occurred during search."
           }
         }
-      },
+      }
+    },
     "put": {
       "description": "Update a class",
       "parameters": [
@@ -315,7 +317,7 @@
     }
   }
 }
-  }}
+  
 
  
  

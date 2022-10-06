@@ -1,8 +1,9 @@
 const mongodb = require('../db/connections');
 const ObjectId = require('mongodb').ObjectId;
 
-
+console.log('controllers');
 const getAll = async (req, res, next) => {
+  console.log('controllers');
   const result = await mongodb
     .getDb()
     .db('project2')

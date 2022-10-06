@@ -1,9 +1,6 @@
 const mongodb = require('../db/connections');
 const ObjectId = require('mongodb').ObjectId;
 
-res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
-    next();
 
 const getAll = async (req, res, next) => {
   const result = await mongodb
@@ -96,6 +93,7 @@ const deleteOne = async (req, res) => {
     res.status(500).json(response.error || 'An error occurred while deleting the artist.');
   }
 };
+
 
 module.exports = { 
   getAll, 

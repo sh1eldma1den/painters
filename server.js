@@ -36,15 +36,15 @@ const url = require('url');
 
 app.use('/', require('./routes'));
 
-const {validationResult, check} = require('express-validator');
-const {
-    createCustomerValidation,
-    createClassValidation,
-    viewOneCustomerValidation,
-    viewOneClassValidation,
-    deleteOneCustomerValidation,
-    deleteOneClassValidation
-}  = require('./checks/validation.js')(check);
+// const {validationResult, check} = require('express-validator');
+// const {
+//     createCustomerValidation,
+//     createClassValidation,
+//     viewOneCustomerValidation,
+//     viewOneClassValidation,
+//     deleteOneCustomerValidation,
+//     deleteOneClassValidation
+// }  = require('./checks/validation.js')(check);
 
 // const dependencies = {
 //     db: db,

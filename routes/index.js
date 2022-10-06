@@ -3,7 +3,7 @@ const router = express.Router();
 
 router.use('/', require('./swagger'));
 router.use('/customers', require('./customers'));
-// router.use('/', require('./classes'));
+router.use('/classes', require('./classes'));
 // router.use('/',
 //     (docData = (req,res) => {
 //         let docData = {

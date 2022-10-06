@@ -4,11 +4,14 @@ const ObjectId = require('mongodb').ObjectId;
 const getAll = async (req, res, next) => {
   const result = await mongodb
     .getDb()
-    .db()
+    .db('project2')
     .collection('class_info')
     .find();
   result.toArray().then((lists) => {
     res.setHeader('Content-Type', 'application/json');
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
+    next();
     res.status(200).json(lists);
   });
 };
@@ -17,7 +20,7 @@ const getOne = async (req, res, next) => {
   const userId = new ObjectId(req.params.id);
   const result = await mongodb
     .getDb()
-    .db()
+    .db('project2')
     .collection('class_info')
     .find({ _id: userId});
   result.toArray().then((lists) => {

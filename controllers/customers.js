@@ -1,9 +1,7 @@
 const mongodb = require('../db/connections');
 const ObjectId = require('mongodb').ObjectId;
 
-console.log('controllers');
 const getAll = async (req, res, next) => {
-  console.log('controllers');
   const result = await mongodb
     .getDb()
     .db('project2')
@@ -20,7 +18,7 @@ const getAll = async (req, res, next) => {
 };
 
 const getOne = async (req, res, next) => {
-  const userId = new ObjectId({ _id: userId});
+  const userId = new ObjectId(req.params.id);
   const result = await mongodb
     .getDb()
     .db('project2')
@@ -56,7 +54,7 @@ const addOne = async (req, res) => {
 };
 
 const updateOne = async (req, res) => {
-  const userId = new ObjectId({ _id: userId});
+  const userId = new ObjectId(req.params.id);
   const customer = {
     firstName: req.body.firstName,
     lastName: req.body.lastName,
@@ -81,7 +79,7 @@ const updateOne = async (req, res) => {
 };
 
 const deleteOne = async (req, res) => {
-  const userId = new ObjectId({ _id: userId});
+  const userId = new ObjectId(req.params.id);
   const response = await mongodb
     .getDb()
     .db('project2')

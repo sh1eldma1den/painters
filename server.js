@@ -5,15 +5,11 @@ app.use(express.json());
 require('dotenv').config();
 
 const port = process.env.PORT || 8000;
-app.listen(port);
 
 const cors = require('cors');
 app.use(cors());
 
-const MongoClient = require('mongodb');
-const [db, objectId] = require('./db/connections')(
-    process.env.MONGODB_URI,
-    MongoClient);
+const mongodb = require('./db/connections');
 
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended:true}));
@@ -50,19 +46,27 @@ const {
     deleteOneClassValidation
 }  = require('./checks/validation.js')(check);
 
-const dependencies = {
-    db: db,
-    url: url,
-    objectId: objectId,
-    validationResult: validationResult,
-    createCustomerValidation: createCustomerValidation,
-    createClassValidation: createClassValidation,
-    viewOneCustomerValidation: viewOneCustomerValidation,
-    viewOneClassValidation: viewOneClassValidation,
-    deleteOneCustomerValidation: deleteOneCustomerValidation,
-    deleteOneClassValidation: deleteOneClassValidation
-};
+// const dependencies = {
+//     db: db,
+//     url: url,
+//     objectId: objectId,
+//     validationResult: validationResult,
+//     createCustomerValidation: createCustomerValidation,
+//     createClassValidation: createClassValidation,
+//     viewOneCustomerValidation: viewOneCustomerValidation,
+//     viewOneClassValidation: viewOneClassValidation,
+//     deleteOneCustomerValidation: deleteOneCustomerValidation,
+//     deleteOneClassValidation: deleteOneClassValidation
+// };
 
+mongodb.initDb((err, mongodb) => {
+    if (err) {
+        console.log(err);
+    } else {
+        app.listen(port);
+        console.log(`Connected to the DB and lisening on ${port}`);
+    }
+});
 
 
 

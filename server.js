@@ -38,6 +38,8 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 const url = require('url');
 
+app.use('/', require('./routes'));
+
 const {validationResult, check} = require('express-validator');
 const {
     createCustomerValidation,
@@ -61,7 +63,6 @@ const dependencies = {
     deleteOneClassValidation: deleteOneClassValidation
 };
 
-// require('./routes/index.js')(app, dependencies);
 
 
 

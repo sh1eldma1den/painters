@@ -238,7 +238,7 @@
             "description":"ID not provided."
           },
           "404":{
-            "description":"No customer matches that ID."
+            "description":"No class matches that ID."
           },
           "500": {
             "description": "An error occurred during search."
@@ -282,7 +282,7 @@
           "description":"ID not provided."
         },
         "404":{
-          "description":"No customer matches that ID."
+          "description":"No class matches that ID."
         },
         "500": {
           "description": "An error occurred during update."
@@ -307,7 +307,7 @@
           "description":"ID not provided."
         },
         "404":{
-          "description":"No customer matches that ID."
+          "description":"No class matches that ID."
         },
         "500": {
           "description": "An error occurred during deletion."

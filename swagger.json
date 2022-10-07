@@ -244,8 +244,7 @@
             "description": "An error occurred during search."
           }
         }
-      }
-    },
+      },
     "put": {
       "description": "Update a class",
       "parameters": [
@@ -315,8 +314,9 @@
         }
       }
     }
-  }
-}
+    }
+  }}
+    
   
 
  

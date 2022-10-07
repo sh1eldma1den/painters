@@ -170,7 +170,7 @@
       }
     }
   },
-    "/classess": {
+    "/class_info": {
       "get": {
         "description": "Get all classes",
         "parameters": [],
@@ -219,7 +219,7 @@
       }
     }
   },
-    "/classes/{id}": {
+    "/class_info/{id}": {
       "get": {
         "description": "Get class by id",
         "parameters": [

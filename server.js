@@ -16,6 +16,7 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 
 const axios = require('axios');
+const Joi = require('joi');
 
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -47,9 +48,6 @@ app.use('/', require('./routes'));
 // }  = require('./checks/validation.js')(check);
 
 // const dependencies = {
-//     db: db,
-//     url: url,
-//     objectId: objectId,
 //     validationResult: validationResult,
 //     createCustomerValidation: createCustomerValidation,
 //     createClassValidation: createClassValidation,

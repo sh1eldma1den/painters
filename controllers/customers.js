@@ -7,27 +7,27 @@ const getAll = async (req, res, next) => {
     .db('project2')
     .collection('customer_info')
     .find();
-  result.toArray().then((lists) => {
-    res.setHeader('Content-Type', 'application/json');
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
-    next();
-    res.status(200).json(lists);
-  });
-  
+    result.toArray().then((lists) => {
+      res.setHeader('Content-Type', 'application/json');
+      res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+      res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
+      next();
+     res.status(200).json(lists);
+        });
 };
 
 const getOne = async (req, res, next) => {
   const userId = new ObjectId(req.params.id);
-  const result = await mongodb
-    .getDb()
-    .db('project2')
-    .collection('customer_info')
-    .find({ _id: userId});
-  result.toArray().then((lists) => {
-    res.setHeader('Content-Type', 'application/json');
-    res.status(200).json(lists[0]);
-  });
+      const result = await mongodb
+      .getDb()
+      .db('project2')
+      .collection('customer_info')
+      .find({ _id: userId});
+    
+      result.toArray().then((lists) => {
+        res.setHeader('Content-Type', 'application/json');
+        res.status(200).json(lists[0]);
+      });
 };
 
 const addOne = async (req, res) => {
@@ -41,16 +41,23 @@ const addOne = async (req, res) => {
     ordersPlaced: req.body.ordersPlaced,
     subscribed: req.body.subscribed
   };
+  if (firstName.isEmpty ||
+      lastName.isEmpty ||
+      address.isEmpty ||
+      email.isEmpty) {
+    return response.status(400).send('Missing required fields.');
+  } else {
   const response = await mongodb
     .getDb()
     .db('project2')
     .collection('customer_info')
     .insertOne(customer);
-  if (response.acknowledged) {
-    res.status(201).json(response);
-  } else {
-    res.status(500).json(response.error || 'An error occurred while creating the artist.');
-  }
+    if (response.acknowledged) {
+      res.status(201).json(response);
+    } else {
+      res.status(500).json(response.error || 'An error occurred while creating the customer.');
+   }
+  };
 };
 
 const updateOne = async (req, res) => {
@@ -65,32 +72,44 @@ const updateOne = async (req, res) => {
     ordersPlaced: req.body.ordersPlaced,
     subscribed: req.body.subscribed
   };
-  const response = await mongodb
-    .getDb()
-    .db('project2')
-    .collection('customer_info')
-    .replaceOne({_id: userId}, customer);
-  console.log(response);
-  if (response.modifiedCount > 0) {
-    res.status(204).send();
+  if({ _id: userId}.isEmpty) {
+    return response.status(400).send('ID is required.');
+  } if(!{ _id: userId}) {
+    return response.status(404).send('No customer found with that ID.');
   } else {
-    res.status(500).json(response.error || 'An error occurred while updating the artist.');
-  }
+    const response = await mongodb
+      .getDb()
+      .db('project2')
+      .collection('customer_info')
+      .replaceOne({_id: userId}, customer);
+      console.log(response);
+    if (response.modifiedCount > 0) {
+     res.status(204).send();
+    } else {
+      res.status(500).json(response.error || 'An error occurred while updating the customer.');
+    }
+  };
 };
 
 const deleteOne = async (req, res) => {
   const userId = new ObjectId(req.params.id);
-  const response = await mongodb
-    .getDb()
-    .db('project2')
-    .collection('customer_info')
-    .deleteOne({_id: userId}, true);
-  console.log(response);
-  if (response.deletedCount > 0) {
-    res.status(204).send();
+  if({ _id: userId}.isEmpty) {
+    return response.status(400).send('ID is required.');
+  } if(!{ _id: userId}) {
+    return response.status(404).send('No customer found with that ID.');
   } else {
-    res.status(500).json(response.error || 'An error occurred while deleting the artist.');
-  }
+    const response = await mongodb
+      .getDb()
+      .db('project2')
+      .collection('customer_info')
+      .deleteOne({_id: userId}, true);
+      console.log(response);
+    if (response.deletedCount > 0) {
+      res.status(204).send();
+    } else {
+      res.status(500).json(response.error || 'An error occurred while deleting the artist.');
+    }
+  };
 };
 
 

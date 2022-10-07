@@ -1,7 +1,7 @@
 const mongodb = require('../db/connections');
 const ObjectId = require('mongodb').ObjectId;
 
-const getAll = async (req, res, next) => {
+const getClasses = async (req, res, next) => {
   const result = await mongodb
     .getDb()
     .db('project2')
@@ -16,7 +16,7 @@ const getAll = async (req, res, next) => {
   });
 };
 
-const getOne = async (req, res, next) => {
+const getClass = async (req, res, next) => {
   const userId = new ObjectId(req.params.id);
   const result = await mongodb
     .getDb()
@@ -29,7 +29,7 @@ const getOne = async (req, res, next) => {
   });
 };
 
-const addOne = async (req, res) => {
+const addClass = async (req, res) => {
   const class_info = {
     className: req.body.className,
     classDate: req.body.classDate,
@@ -49,7 +49,7 @@ const addOne = async (req, res) => {
   }
 };
 
-const updateOne = async (req, res) => {
+const updateClass = async (req, res) => {
   const userId = new ObjectId(req.params.id);
   const class_info = {
     className: req.body.className,
@@ -71,7 +71,7 @@ const updateOne = async (req, res) => {
   }
 };
 
-const deleteOne = async (req, res) => {
+const deleteClass = async (req, res) => {
   const userId = new ObjectId(req.params.id);
   const response = await mongodb
     .getDb()
@@ -87,9 +87,9 @@ const deleteOne = async (req, res) => {
 };
 
 module.exports = { 
-  getAll, 
-  getOne,
-  addOne,
-  updateOne,
-  deleteOne 
+  getClasses, 
+  getClass,
+  addClass,
+  updateClass,
+  deleteClass 
 };

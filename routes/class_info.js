@@ -3,10 +3,10 @@ const express = require('express');
 const router = express.Router();
 const classController = require('../controllers/class_info');
 
-router.get('/', classController.getAll);
-router.get('/:id', classController.getOne);
-router.post('/', classController.addOne);
-router.put('/:id', classController.updateOne);
-router.delete('/:id', classController.deleteOne);
+router.get('/', classController.getClasses);
+router.get('/:id', classController.getClass);
+router.post('/', classController.addClass);
+router.put('/:id', classController.updateClass);
+router.delete('/:id', classController.deleteClass);
 
 module.exports = router;

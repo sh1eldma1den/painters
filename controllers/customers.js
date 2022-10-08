@@ -44,12 +44,6 @@ const addOne = async (req, res) => {
     ordersPlaced: req.body.ordersPlaced,
     subscribed: req.body.subscribed
   };
-  if (firstName.isEmpty ||
-      lastName.isEmpty ||
-      address.isEmpty ||
-      email.isEmpty) {
-    return response.status(400).send('Missing required fields.');
-  } else {
   const response = await mongodb
     .getDb()
     .db('project2')
@@ -60,7 +54,7 @@ const addOne = async (req, res) => {
     } else {
       res.status(500).json(response.error || 'An error occurred while creating the customer.');
    }
-  };
+  
 };
 
 const updateOne = async (req, res) => {
@@ -75,11 +69,6 @@ const updateOne = async (req, res) => {
     ordersPlaced: req.body.ordersPlaced,
     subscribed: req.body.subscribed
   };
-  if({ _id: userId}.isEmpty) {
-    return response.status(400).send('ID is required.');
-  } if(!{ _id: userId}) {
-    return response.status(404).send('No customer found with that ID.');
-  } else {
     const response = await mongodb
       .getDb()
       .db('project2')
@@ -91,16 +80,11 @@ const updateOne = async (req, res) => {
     } else {
       res.status(500).json(response.error || 'An error occurred while updating the customer.');
     }
-  };
+  
 };
 
 const deleteOne = async (req, res) => {
   const userId = new ObjectId(req.params.id);
-  if({ _id: userId}.isEmpty) {
-    return response.status(400).send('ID is required.');
-  } if(!{ _id: userId}) {
-    return response.status(404).send('No customer found with that ID.');
-  } else {
     const response = await mongodb
       .getDb()
       .db('project2')
@@ -112,7 +96,7 @@ const deleteOne = async (req, res) => {
     } else {
       res.status(500).json(response.error || 'An error occurred while deleting the artist.');
     }
-  };
+  
 };
 
 

@@ -1,32 +1,40 @@
 const mongodb = require('../db/connections');
 const ObjectId = require('mongodb').ObjectId;
 
-const getClasses = async (req, res, next) => {
-  const result = await mongodb
+const getClasses = (req, res) => {
+  mongodb
     .getDb()
     .db('project2')
     .collection('class_info')
-    .find();
-  result.toArray().then((lists) => {
-    res.setHeader('Content-Type', 'application/json');
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
-    next();
-    res.status(200).json(lists);
+    .find()
+    .toArray((err, lists) => {
+      if(err) {
+        res.status(400).json({message: err});
+      }
+      res.setHeader('Content-Type', 'application/json');
+      res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+      res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
+      res.status(200).json(lists);
   });
 };
 
-const getClass = async (req, res, next) => {
+const getClass = (req, res) => {
+  if (!ObjectId.isValid(req.params.id)){
+    res.status(400).json('Must be a valid customer ID.');
+  }
   const userId = new ObjectId(req.params.id);
-  const result = await mongodb
+  mongodb
     .getDb()
     .db('project2')
     .collection('class_info')
-    .find({ _id: userId});
-  result.toArray().then((lists) => {
-    res.setHeader('Content-Type', 'application/json');
-    res.status(200).json(lists[0]);
-  });
+    .find({ _id: userId})
+    .toArray((err, lists) => {
+      if(err) {
+        res.status(400).json({message: err});
+      }
+      res.setHeader('Content-Type', 'application/json');
+      res.status(200).json(lists[0]);
+    });
 };
 
 const addClass = async (req, res) => {
@@ -50,6 +58,9 @@ const addClass = async (req, res) => {
 };
 
 const updateClass = async (req, res) => {
+  if (!ObjectId.isValid(req.params.id)){
+    res.status(400).json('Must be a valid customer ID.');
+  }
   const userId = new ObjectId(req.params.id);
   const class_info = {
     className: req.body.className,
@@ -72,6 +83,9 @@ const updateClass = async (req, res) => {
 };
 
 const deleteClass = async (req, res) => {
+  if (!ObjectId.isValid(req.params.id)){
+    res.status(400).json('Must be a valid customer ID.');
+  }
   const userId = new ObjectId(req.params.id);
   const response = await mongodb
     .getDb()

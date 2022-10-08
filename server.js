@@ -35,6 +35,10 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 const url = require('url');
 
+process.on('uncaughtException', (err, origin) => {
+    console.log(process.stderr.fd, `Caught exception: ${err}\n` + `Exception origin: ${origin}`);
+  });
+
 app.use('/', require('./routes'));
 
 // const {validationResult, check} = require('express-validator');

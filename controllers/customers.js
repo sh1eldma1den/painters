@@ -1,29 +1,37 @@
 const mongodb = require('../db/connections');
 const ObjectId = require('mongodb').ObjectId;
 
-const getAll = async (req, res, next) => {
-  const result = await mongodb
+const getAll = (req, res) => {
+  mongodb
     .getDb()
     .db('project2')
     .collection('customer_info')
-    .find();
-    result.toArray().then((lists) => {
+    .find()
+    .toArray((err, lists) => {
+      if(err) {
+        res.status(400).json({message: err});
+      }
       res.setHeader('Content-Type', 'application/json');
       res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
       res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
-      next();
-     res.status(200).json(lists);
-        });
+      res.status(200).json(lists);
+    });
 };
 
-const getOne = async (req, res, next) => {
+const getOne = (req, res) => {
+  if (!ObjectId.isValid(req.params.id)){
+    res.status(400).json('Must be a valid customer ID.');
+  }
   const userId = new ObjectId(req.params.id);
-      const result = await mongodb
+    mongodb
       .getDb()
       .db('project2')
       .collection('customer_info')
-      .find({ _id: userId});
-      result.toArray().then((lists) => {
+      .find({ _id: userId})
+      .toArray((err, lists) => {
+        if(err) {
+          res.status(400).json({message: err});
+        }
         res.setHeader('Content-Type', 'application/json');
         res.setHeader('Content-Type', 'application/json');
         res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
@@ -58,6 +66,9 @@ const addOne = async (req, res) => {
 };
 
 const updateOne = async (req, res) => {
+  if (!ObjectId.isValid(req.params.id)){
+    res.status(400).json('Must be a valid customer ID.');
+  }
   const userId = new ObjectId(req.params.id);
   const customer = {
     firstName: req.body.firstName,
@@ -74,7 +85,7 @@ const updateOne = async (req, res) => {
       .db('project2')
       .collection('customer_info')
       .replaceOne({_id: userId}, customer);
-      console.log(response);
+    console.log(response);
     if (response.modifiedCount > 0) {
      res.status(204).send();
     } else {
@@ -84,6 +95,9 @@ const updateOne = async (req, res) => {
 };
 
 const deleteOne = async (req, res) => {
+  if (!ObjectId.isValid(req.params.id)){
+    res.status(400).json('Must be a valid customer ID.');
+  }
   const userId = new ObjectId(req.params.id);
     const response = await mongodb
       .getDb()

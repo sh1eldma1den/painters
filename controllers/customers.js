@@ -23,9 +23,12 @@ const getOne = async (req, res, next) => {
       .db('project2')
       .collection('customer_info')
       .find({ _id: userId});
-    
       result.toArray().then((lists) => {
         res.setHeader('Content-Type', 'application/json');
+        res.setHeader('Content-Type', 'application/json');
+        res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+        res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
+        next();
         res.status(200).json(lists[0]);
       });
 };

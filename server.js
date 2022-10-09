@@ -1,9 +1,10 @@
+require('dotenv').config();
 const express = require('express');
 const app = express();
 app.use(express.json());
 
 const { auth, requiresAuth } = require('express-openid-connect');
-require('dotenv').config();
+
 const config = {
   authRequired: false,
   auth0Logout: true,

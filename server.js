@@ -36,9 +36,6 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 
-const axios = require('axios');
-const Joi = require('joi');
-
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader(

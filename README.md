@@ -1,6 +1,12 @@
-# painters
 
-This is code for Project 2 in CSE341. This project requires a 
-minimum of two collections within a new database in MongoDB. 
-
-For the first deadline, POST and GET queries should work, and the API should be successfully deployed using Render.
+// This API creation project requires a 
+// minimum of two collections within a new
+// database in MongoDB and a deployment using 
+// Render with a swagger-generated UI. 
+//
+// Contains GET, POST, PUT and DELETE queries 
+// with client-side and server-side validation 
+// Requires authentication.
+//
+// Repository contains all data from the
+// MongoDB database stored in JSON format.
